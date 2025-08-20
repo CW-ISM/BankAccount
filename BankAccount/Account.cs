@@ -14,7 +14,7 @@ public class Account
     /// <summary>
     /// The current balance of the account.
     /// </summary>
-    public decimal Balance { get; private set; }
+    public double Balance { get; private set; }
 
     /// <summary>
     /// Deposits a specified amount into the account.
@@ -22,7 +22,7 @@ public class Account
     /// <param name="amount"></param>
     /// <returns></returns>
     /// <exception cref="ArgumentException"></exception>
-    public decimal Deposit(decimal amount)
+    public double Deposit(double amount)
     {
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(amount, "Deposit cannot be zero or less.");
 
@@ -37,7 +37,7 @@ public class Account
     /// <returns></returns>
     /// <exception cref="ArgumentException"></exception>
     /// <exception cref="InvalidOperationException"></exception>
-    public decimal Withdraw(decimal amount)
+    public double Withdraw(double amount)
     {
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(amount, "Withdraw cannot be zero or less.");
         ArgumentOutOfRangeException.ThrowIfGreaterThan(amount, Balance, "Withdrawal amount cannot exceed balance.");
