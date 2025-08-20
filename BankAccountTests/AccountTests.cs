@@ -7,7 +7,7 @@ public class AccountTests
 {
     [TestMethod]
     [DataRow(10.01)]
-    public void DepositTest(decimal deposit)
+    public void DepositTest(double deposit)
     {
         // Arrange
         var account = new Account { AccountNumber = "1234-ABCDE" };
@@ -18,8 +18,15 @@ public class AccountTests
     }
 
     [TestMethod()]
-    public void WithdrawTest()
+    [DataRow(10.01)]
+    public void WithdrawTest(double withdraw)
     {
-        Assert.Fail();
+        // Arrange
+        var account = new Account { AccountNumber = "1234-ABCDE" };
+        // Act
+        var beforeWidthrawl = account.Deposit(withdraw * 2);
+        var result = account.Withdraw(withdraw);
+        // Assert
+        Assert.IsLessThan(beforeWidthrawl, result);
     }
 }
